@@ -38,13 +38,13 @@ Game::~Game()
 }
 
 void Game::Go()
-{
+{	
 	HandleInput();
 	UpdateModel();
 	gfx.BeginFrame();
 	ComposeFrame();
 	gfx.EndFrame();
-}
+ }
 
 void Game::HandleInput()
 {

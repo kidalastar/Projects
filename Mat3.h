@@ -15,11 +15,11 @@ public:
 	 {
 		 for each(T&  e in elements)
 		 {
-			 e *= rhs; 
+			 e *= rhs;
 		 }
 		 return *this;
 	 }
-	 _Mat3& operator *=(const T rhs) const
+	 _Mat3& operator *(const T rhs) const
 	 {
 		 _Mat3 result = *this;
 		 return result*=rhs;
@@ -28,16 +28,16 @@ public:
 	 {
 		 _Mat3 result;
 
-		 for (int i = 0;i < 3;i++)
+		 for (int j = 0; j < 3; j++)
 		 {
-			 for (int j = 0; j < 3; j++)
+			 for (int k = 0; k < 3; k++)
 			 {
 				 T sum = (T)0.0;
-				 for (int k = 0; k < 3; k++)
+				 for (int i = 0; i < 3; i++)
 				 {
-					 sum += elements[i][k] * rhs.elements[k][j];
+					 sum += elements[j][i] * rhs.elements[i][k];
 				 }
-				 result.elements[i][j] = sum;
+				 result.elements[j][k] = sum;
 			 }
 		 }
 		 return result;

@@ -6,7 +6,7 @@ class Ship
 {
 public:
 
-	Ship(std::string filename,Vec2 pos = {0.0f,0.0f})
+	Ship(std::string filename,Vec2 pos = {000.0f,000.0f})
 		:
 		pos(pos),
 		model(filename)
@@ -31,10 +31,22 @@ public:
 		vel += Vec2({0.0f,-1.0f}).Rotation(angle) * accel* thrust;
 		pos += vel;
 	}
-	void Thrust()  	{ thrust = 1.0f;}
-	void StopThrusting() { thrust = 0.0f; }
-	void Spin(float dir) { angAccelDir = dir; }
-	void StopSpining(float dir) { angAccelDir == dir ? angAccelDir = 0.0f : angAccelDir; }
+	void Thrust()
+	{
+		thrust = 1.0f;
+	}
+	void StopThrusting()
+	{
+		thrust = 0.0f;
+	}
+	void Spin(float dir)
+	{
+		angAccelDir = dir;
+	}
+	void StopSpining(float dir)
+	{
+		angAccelDir == dir ? angAccelDir = 0.0f : angAccelDir;
+	}
 
 private:
 	// strutural
@@ -50,7 +62,6 @@ private:
 	float angle = 0.0f;
 	float angVel = 0.0f;//velocidade angular
 	const float angAccel = 0.01f;//velocidade angular 
-	// +1 = rotacao na direção contraria ao relógio,0 = não está mudando 
-	float angAccelDir = 0.0f;//derecao da acelaracao
+	float angAccelDir = 0.0f;//derecao da acelaracao // +1 = rotacao na direção contraria ao relógio,0 = não está mudando 
 
 };
