@@ -53,9 +53,9 @@ d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\d
   Keyboard.cpp
   Mouse.cpp
   Sound.cpp
-  Timer.cpp
 d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Game.cpp)
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file Game.cpp)
+  Timer.cpp
   Windows.cpp
 d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Windows.cpp)
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file Windows.cpp)

@@ -27,7 +27,8 @@ Game::Game( HWND hWnd,KeyboardServer& kServer,const MouseServer& mServer) :
 	audio( hWnd ),
 	kbd( kServer ),
 	mouse( mServer ),
-	ship("shipd.dxf"),
+	ship("shipd.dxf", { 400.0f,226.0f }),
+	map("map.dxf"),
 	port (gfx,{0,D3DGraphics::SCREENHEIGHT-1,0,D3DGraphics::SCREENWIDTH - 1 }),
 	cam ( port,(float)port.GetWidth(), (float)port.GetHeight() )
 {
@@ -74,10 +75,14 @@ void Game::HandleInput()
 
 void Game::UpdateModel( )
 {
-	ship.Update();
+	const float dt = timer.GetTimeSec();
+	timer.StartWatch();
+	ship.Update(dt);
 }
 
 void Game::ComposeFrame()
 {
+	ship.FocusOn(cam);
 	cam.Draw(ship.GetDrawble());
+	cam.Draw(map.GetDrawble());
 }

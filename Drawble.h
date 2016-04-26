@@ -15,12 +15,12 @@ public:
 	{
 		trans = mat * trans;
 	} 
-	void Clip(const RectI& rect)
+	void Clip(const RectF& rect)
 	{
 		clip.ClipTo(rect);
 	}
-	virtual void Rasterize(class D3DGraphics& gfx) = 0;
+	virtual void Rasterize(class D3DGraphics& gfx) const  = 0 ;
 protected:
 	Mat3 trans;
-	RectI clip;//cliping utilizando alg de clipping
+	RectF clip;//cliping utilizando alg de clipping
 };

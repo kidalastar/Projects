@@ -9,41 +9,39 @@
 #include <vector> 
 #include <memory>
 
-
-class PolyCloseLoader : public DL_CreationAdapter
-{
-public:
-
-	PolyCloseLoader(std::string filename)
-	{
-		//std::unique_ptr ponteiro inteligente que exclui o objeto quando este não sera mais utilizado
-		//basicamente chama o destrutor para liberar o objeto da memória depois de usado
-		//std::unique_ptr <Dl_Dxf> pDxf(new Dl_Dxf);
-		//std::make_unique<T> substitui o new  T () e as vezes fica mais rapido
-		//auto funciona como ao var do c#
-		auto  pDxf = std::make_unique<DL_Dxf>();
-		pDxf->in(filename, this);
-	}
-
-	virtual void addVertex( const DL_VertexData& data) override
-	{
-		//adiciona novo item ao final da lista
-		vertices.push_back({(float)data.x,-(float)data.y});
-	}
-    
-	std::vector<Vec2>& GetVertices()
-	{
-		return vertices;
-	}
-private:
-	std::vector<Vec2> vertices;
-
-};
-
-
-
 class PolyClosed
 {
+private:
+	class Loader : public DL_CreationAdapter
+	{
+
+	public:
+
+		Loader(std::string filename)
+		{
+			//std::unique_ptr ponteiro inteligente que exclui o objeto quando este não sera mais utilizado
+			//basicamente chama o destrutor para liberar o objeto da memória depois de usado
+			//std::unique_ptr <Dl_Dxf> pDxf(new Dl_Dxf);
+			//std::make_unique<T> substitui o new  T () e as vezes fica mais rapido
+			//auto funciona como ao var do c#
+			auto  pDxf = std::make_unique<DL_Dxf>();
+			pDxf->in(filename, this);
+		}
+
+		virtual void addVertex(const DL_VertexData& data) override
+		{
+			//adiciona novo item ao final da lista
+			vertices.push_back({ (float)data.x,-(float)data.y });
+		}
+
+		operator std::vector<Vec2>&&()
+		{
+			return std::move(vertices);
+		}
+	private:
+		std::vector<Vec2> vertices;
+
+	};
 
 public:
 	class Drawble : public :: Drawble //cria uma extensao interna da classe Drawble
@@ -53,31 +51,19 @@ public:
 			:
 			parent(parent){}
 
-		virtual void Rasterize(class D3DGraphics& gfx) override
+		virtual void Rasterize(class D3DGraphics& gfx) const override
 		{
 			//.begin() primeiro item do vector | .end() uma posição depois da ultima posicao do vetor
 			for (auto i = parent.vertices.begin(), end = parent.vertices.end() - 1; i != end;i++)
 			{
 				//i é um iterator que representa um ponteiro que aponta para o objeto na posicao "i"
 				//i* aponta para o objeto na posicao i
-				gfx.DrawLineClip(trans * *i, trans * *(i + 1), parent.color);
+				gfx.DrawLineClip(trans * *i, trans * *(i + 1), parent.color,clip);
 			}
 			//.back pega a ultima posicao do vetor | .front() pega a primeira
-			gfx.DrawLineClip(trans * parent.vertices.back(), trans * parent.vertices.front(), parent.color);
+			gfx.DrawLineClip(trans * parent.vertices.back(), trans * parent.vertices.front(), parent.color, clip);
 		}
 
-		//virtual void Rasterize(class D3DGraphics& gfx) override
-		//	{
-		//		//.begin() primeiro item do vector | .end() uma posição depois da ultima posicao do vetor
-		//		for (auto i = parent.vertices.begin(), end = parent.vertices.end() - 1; i != end;i++)
-		//		{
-		//			//i é um iterator que representa um ponteiro que aponta para o objeto na posicao "i"
-		//			//i* aponta para o objeto na posicao i
-		//			gfx.DrawLineClip(i->Rotation(0.1f),  (i + 1)->Rotation(0.1f), parent.color);
-		//		}
-		//		//.back pega a ultima posicao do vetor | .front() pega a primeira
-		//		gfx.DrawLineClip(parent.vertices.back().Rotation(0.1f),parent.vertices.front().Rotation(0.1f), parent.color);
-		//	}
 	private:
 		const PolyClosed& parent;
 	};
@@ -91,7 +77,7 @@ public:
 		{}
 	PolyClosed(std::string filename,D3DCOLOR color = WHITE )
 		:
-		vertices (PolyCloseLoader(filename).GetVertices()),
+		vertices (Loader(filename)),
 		color( color)
 		{}
 	Drawble GetDrawble() const

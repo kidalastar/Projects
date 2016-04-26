@@ -13,7 +13,7 @@ public:
 		pos(0.0f,0.0f),
 		toCenter({width/2.0f,height/2.0f})
 	{ }
-	virtual void Draw(Drawble& obj)
+	virtual void Draw(Drawble& obj) override
 	{
 		obj.Transform(Mat3::Translation(-pos));
 		next.Draw(obj);

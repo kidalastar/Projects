@@ -53,7 +53,7 @@ public:
 	// Cohen–Sutherland clipping algorithm clips a line from
 	// P0 = (p0.x, p0.y) to P1 = (p1.x, p1.y) against a rectangle with 
 	// diagonal from (xmin, ymin) to (xmax, ymax).
-	void DrawLineClip(Vec2 p0,Vec2 p1,D3DCOLOR color)
+	void DrawLineClip(Vec2 p0,Vec2 p1,D3DCOLOR color,const RectF& clip)
 	{
 		enum OutCode
 		{
@@ -64,22 +64,17 @@ public:
 			TOP = 8,    // 1000
 		};
 
-		const float xmin = 0.0f;
-		const float xmax = (float)(D3DGraphics::SCREENWIDTH -1);
-		const float ymin = 0.0f;
-		const float ymax = (float)(D3DGraphics::SCREENHEIGHT -1);
 
-		std::function<OutCode(float , float )> ComputeOutCode = [xmin, xmax, ymin, ymax] (float x, float y) -> OutCode
+		std::function<OutCode(float , float )> ComputeOutCode = [&clip](float x, float y) -> OutCode
 		{
-			OutCode code;
-			code = INSIDE;          // initialised as being inside of clip window
-			if (x < xmin)           // to the left of clip window
+			OutCode code = INSIDE;   // initialised as being inside of clip window
+			if (x < clip.left)           // to the left of clip window
 				code = (OutCode)LEFT;
-			else if (x > xmax)      // to the right of clip window
+			else if (x > clip.right)  // to the right of clip window
 				code = (OutCode)RIGHT;
-			if (y < ymin)           // below the clip window
+			if (y < clip.top)           // below the clip window
 				code = (OutCode)BOTTOM;
-			else if (y > ymax)      // above the clip window
+			else if (y > clip.bottom)      // above the clip window
 				code = (OutCode)TOP;
 			return code;
 		};
@@ -109,20 +104,20 @@ public:
 				// Now find the intersection point;
 				// use formulas y = p0.y + slope * (x - p0.x), x = p0.x + (1 / slope) * (y - p0.y)
 				if (outcodeOut & TOP) {           // point is above the clip rectangle
-					x = p0.x + (p1.x - p0.x) * (ymax - p0.y) / (p1.y - p0.y);
-					y = ymax;
+					x = p0.x + (p1.x - p0.x) * (clip.bottom - p0.y) / (p1.y - p0.y);
+					y = clip.bottom;
 				}
 				else if (outcodeOut & BOTTOM) { // point is below the clip rectangle
-					x = p0.x + (p1.x - p0.x) * (ymin - p0.y) / (p1.y - p0.y);
-					y = ymin;
+					x = p0.x + (p1.x - p0.x) * (clip.top - p0.y) / (p1.y - p0.y);
+					y = clip.top;
 				}
 				else if (outcodeOut & RIGHT) {  // point is to the right of clip rectangle
-					y = p0.y + (p1.y - p0.y) * (xmax - p0.x) / (p1.x - p0.x);
-					x = xmax;
+					y = p0.y + (p1.y - p0.y) * (clip.right - p0.x) / (p1.x - p0.x);
+					x = clip.right;
 				}
 				else if (outcodeOut & LEFT) {   // point is to the left of clip rectangle
-					y = p0.y + (p1.y - p0.y) * (xmin - p0.x) / (p1.x - p0.x);
-					x = xmin;
+					y = p0.y + (p1.y - p0.y) * (clip.left - p0.x) / (p1.x - p0.x);
+					x = clip.left;
 				}
 
 				// Now we move outside point to intersection point to clip

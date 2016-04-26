@@ -27,6 +27,8 @@
 #include "Camera.h"
 #include "ViewPort.h"
 #include "Ship.h"
+#include "Timer.h"
+#include "Map.h"
 
 class Game
 {
@@ -53,6 +55,9 @@ private:
 	ViewPort port;
 	Camera cam;
 	Ship ship;
+	Map map;
+	Timer timer;
+	
 	
 	
 	/********************************/

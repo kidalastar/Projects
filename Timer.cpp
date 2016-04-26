@@ -56,3 +56,8 @@ float Timer::GetTimeMilli() const
 		return (float)(currentCount - startCount) * invFreqMilli;
 	}
 }
+
+float Timer::GetTimeSec() const
+{
+	return GetTimeMilli() / 1000.0f ;
+}

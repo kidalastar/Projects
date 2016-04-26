@@ -7,7 +7,7 @@ class ViewPort : public DrawTarget
 {
 public:
 
-	ViewPort(DrawTarget& next,RectI rect)
+	ViewPort(DrawTarget& next,const RectF& rect)
 		:
 		next(next),
 		clip(rect)
@@ -18,16 +18,16 @@ public:
 		obj.Clip(clip);
 		next.Draw(obj);
 	}
-	int GetWidth() const
+	float GetWidth() const
 	{
 		return clip.GetWidth();
 	}
-	int GetHeight() const
+	float GetHeight() const
 	{
 		return clip.GetHeight();
 	}
 
 private:
 	DrawTarget& next;
-	RectI clip;
+	RectF clip;
 };
