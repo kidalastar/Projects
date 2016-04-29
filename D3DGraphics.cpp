@@ -52,7 +52,6 @@ pSysBuffer( NULL )
 
 	pSysBuffer = new D3DCOLOR[ SCREENWIDTH * SCREENHEIGHT ];
 }
-
 D3DGraphics::~D3DGraphics()
 {
 	if( pDevice )
@@ -76,41 +75,14 @@ D3DGraphics::~D3DGraphics()
 		pSysBuffer = NULL;
 	}
 }
-
-void D3DGraphics::BeginFrame()
+void D3DGraphics::PutPixel(int x, int y, D3DCOLOR c)
 {
-	memset( pSysBuffer,FILLVALUE,sizeof(D3DCOLOR)* SCREENWIDTH * SCREENHEIGHT );
+	assert(x >= 0);
+	assert(y >= 0);
+	assert(x < SCREENWIDTH);
+	assert(y < SCREENHEIGHT);
+	pSysBuffer[x + SCREENWIDTH * y] = c;
 }
-
-void D3DGraphics::EndFrame()
-{
-	HRESULT result;
-	D3DLOCKED_RECT backRect;
-
-	result = pBackBuffer->LockRect( &backRect,NULL,NULL );
-	assert( !FAILED( result ) );
-
-	for( int y = 0; y < SCREENHEIGHT; y++ )
-	{
-		memcpy( &((BYTE*)backRect.pBits)[backRect.Pitch * y],&pSysBuffer[SCREENWIDTH * y],sizeof(D3DCOLOR)* SCREENWIDTH );
-	}
-
-	result = pBackBuffer->UnlockRect( );
-	assert( !FAILED( result ) );
-
-	result = pDevice->Present( NULL,NULL,NULL,NULL );
-	assert( !FAILED( result ) );
-}
-
-void D3DGraphics::PutPixel( int x,int y,D3DCOLOR c )
-{	
-	assert( x >= 0 );
-	assert( y >= 0 );
-	assert( x < SCREENWIDTH );
-	assert( y < SCREENHEIGHT );
-	pSysBuffer[ x + SCREENWIDTH * y ] = c;
-}
-
 D3DCOLOR D3DGraphics::GetPixel( int x,int y ) const
 {
 	assert( x >= 0 );
@@ -119,7 +91,6 @@ D3DCOLOR D3DGraphics::GetPixel( int x,int y ) const
 	assert( y < SCREENHEIGHT );
 	return pSysBuffer[ x + SCREENWIDTH * y ];
 }
-
 void D3DGraphics::DrawLine( int x1,int y1,int x2,int y2,D3DCOLOR c )
 {	
 	const int dx = x2 - x1;
@@ -168,7 +139,6 @@ void D3DGraphics::DrawLine( int x1,int y1,int x2,int y2,D3DCOLOR c )
 		}
 	}
 }
-
 void D3DGraphics::DrawCircle( int centerX,int centerY,int radius,D3DCOLOR color )
 {
 	int rSquared = sq( radius );
@@ -185,4 +155,31 @@ void D3DGraphics::DrawCircle( int centerX,int centerY,int radius,D3DCOLOR color 
 		PutPixel( centerX + y,centerY - x,color );
 		PutPixel( centerX - y,centerY - x,color );
 	}
+}
+void D3DGraphics::DrawCircle(Vec2 center, int radius, D3DCOLOR color)
+{
+	DrawCircle((int)center.x, (int)center.y,radius, color);
+}
+void D3DGraphics::BeginFrame()
+{
+	memset(pSysBuffer, FILLVALUE, sizeof(D3DCOLOR)* SCREENWIDTH * SCREENHEIGHT);
+}
+void D3DGraphics::EndFrame()
+{
+	HRESULT result;
+	D3DLOCKED_RECT backRect;
+
+	result = pBackBuffer->LockRect(&backRect, NULL, NULL);
+	assert(!FAILED(result));
+
+	for (int y = 0; y < SCREENHEIGHT; y++)
+	{
+		memcpy(&((BYTE*)backRect.pBits)[backRect.Pitch * y], &pSysBuffer[SCREENWIDTH * y], sizeof(D3DCOLOR)* SCREENWIDTH);
+	}
+
+	result = pBackBuffer->UnlockRect();
+	assert(!FAILED(result));
+
+	result = pDevice->Present(NULL, NULL, NULL, NULL);
+	assert(!FAILED(result));
 }

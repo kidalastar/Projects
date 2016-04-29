@@ -33,16 +33,17 @@ public:
 	~D3DGraphics();
 	void PutPixel( int x,int y,D3DCOLOR c );
 	D3DCOLOR GetPixel( int x,int y ) const;
-	inline void DrawLine( Vec2& pt1,Vec2& pt2,D3DCOLOR c )
+	void DrawLine( Vec2& pt1,Vec2& pt2,D3DCOLOR c )
 	{
 		DrawLine( (int)pt1.x,(int)pt1.y,(int)pt2.x,(int)pt2.y,c );
 	}
 	void DrawLine( int x1,int y1,int x2,int y2,D3DCOLOR c );
-	void DrawCircle( int centerX,int centerY,int radius,D3DCOLOR c );
+	void DrawCircle( int centerX,int centerY,int radius,D3DCOLOR color );
+	void DrawCircle(Vec2 center, int radius, D3DCOLOR color );
 	void BeginFrame();
 	void EndFrame();
 
-	virtual void Draw(Drawble&  obj)  override
+	void Draw(Drawble&  obj)  override
 	{
 		obj.Rasterize(*this);
 	}
@@ -68,14 +69,16 @@ public:
 		std::function<OutCode(float , float )> ComputeOutCode = [&clip](float x, float y) -> OutCode
 		{
 			OutCode code = INSIDE;   // initialised as being inside of clip window
+
 			if (x < clip.left)           // to the left of clip window
-				code = (OutCode)LEFT;
-			else if (x > clip.right)  // to the right of clip window
-				code = (OutCode)RIGHT;
+				code = (OutCode)(code | LEFT);
+			else if (x > clip.right)      // to the right of clip window
+				code = (OutCode)(code | RIGHT);
 			if (y < clip.top)           // below the clip window
-				code = (OutCode)BOTTOM;
+				code = (OutCode)(code | BOTTOM);
 			else if (y > clip.bottom)      // above the clip window
-				code = (OutCode)TOP;
+				code = (OutCode)(code | TOP);
+
 			return code;
 		};
 
@@ -96,7 +99,7 @@ public:
 			else {
 				// failed both tests, so calculate the line segment to clip
 				// from an outside point to an intersection with clip edge
-				float x, y;
+				float x, y ;
 
 				// At least one endpoint is outside the clip rectangle; pick it.
 				OutCode outcodeOut = outcode0 ? outcode0 : outcode1;

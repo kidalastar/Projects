@@ -5,19 +5,44 @@
 
 class Ship
 {
-public:
 
+public:
+	class Drawble : public ::Drawble //cria uma extensao interna da classe Drawble
+	{
+
+	public:
+		Drawble(const Ship& parent)
+			:
+			parent(parent)
+		{
+			Transform(Mat3::Translation(parent.pos) * Mat3::Rotation(parent.angle));
+		}
+
+		void Rasterize(D3DGraphics& gfx) const override
+		{
+			PolyClosed::Drawble d = parent.model.GetDrawble();
+			d.Transform(trans);
+			gfx.Draw(d);
+
+
+			const Vec2 shieldCenter = trans * Vec2(0.0f, 0.0f);
+			gfx.DrawCircle(shieldCenter, parent.shieldRadius, parent.shieldColor);
+		}
+		
+	private:
+		const Ship& parent;
+	};
+
+
+public:
 	Ship(std::string filename,Vec2 pos = {0.0f,0.0f})
 		:
 		pos(pos),
 		model(filename)
 	{}
-
-	PolyClosed::Drawble GetDrawble() const
+	Drawble GetDrawble() const
 	{
-		PolyClosed::Drawble d = model.GetDrawble();
-		d.Transform(Mat3::Translation(pos) * Mat3::Rotation(angle));
-		return d;
+		return Drawble( *this);
 	}
 	void Update(float dt)//delta time
 	{
@@ -37,7 +62,7 @@ public:
 
 
 		//linear (1st order then 0th order)
-		vel += Vec2({0.0f,-1.0f}).Rotation(angle) * accel* thrust;
+		vel += Vec2({0.0f,-1.0f}).Rotation(angle) * accel* thrust * dt;
 		pos += vel*dt;
 	}
 	void FocusOn(Camera& cam ) const
@@ -55,16 +80,21 @@ public:
 	}
 	void Spin(float dir)
 	{
-		angAccelDir = dir;
+		angAccelDir = copysign(1.0f, dir);
 	}
 	void StopSpining(float dir)
 	{
-		angAccelDir == dir ? angAccelDir = 0.0f : angAccelDir;
+		if (angAccelDir == copysign(1.0f, dir))
+		{
+			angAccelDir = 0.0f;
+		}
 	}
 
 private:
 	// strutural
 	PolyClosed model;
+	const int shieldRadius = 60;
+	const D3DCOLOR shieldColor = D3DCOLOR_XRGB(0,255,0);
 
 	//linear
 	Vec2 pos;

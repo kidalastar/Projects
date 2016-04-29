@@ -1,62 +1,7 @@
-﻿  D3DGraphics.cpp
-  dl_dxf.cpp
-  dl_writer_ascii.cpp
-  Game.cpp
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_writer_ascii.cpp(64): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_writer_ascii.cpp(112): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1769): note: see declaration of 'sprintf'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file dxflib\dl_dxf.cpp)
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file dxflib\dl_dxf.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(130): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(306): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(336): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(424): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(428): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(450): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(624): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(730): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(2069): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(2501): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(2505): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(4992): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(4995): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(4998): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(5001): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(346): note: see declaration of 'strncpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(5036): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(5037): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(5038): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(5039): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(5040): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.cpp(5041): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
-  Keyboard.cpp
-  Mouse.cpp
-  Sound.cpp
+﻿  Game.cpp
+  Windows.cpp
 d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Game.cpp)
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file Game.cpp)
-  Timer.cpp
-  Windows.cpp
 d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Windows.cpp)
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file Windows.cpp)
   Projeto1.vcxproj -> D:\Users\Gunter\Documents\Visual Studio 2015\Projects\Projeto1\Debug\Projeto1.exe

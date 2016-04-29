@@ -51,7 +51,7 @@ public:
 			:
 			parent(parent){}
 
-		virtual void Rasterize(class D3DGraphics& gfx) const override
+		void Rasterize(class D3DGraphics& gfx) const override
 		{
 			//.begin() primeiro item do vector | .end() uma posição depois da ultima posicao do vetor
 			for (auto i = parent.vertices.begin(), end = parent.vertices.end() - 1; i != end;i++)

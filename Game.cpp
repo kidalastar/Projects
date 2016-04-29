@@ -27,7 +27,7 @@ Game::Game( HWND hWnd,KeyboardServer& kServer,const MouseServer& mServer) :
 	audio( hWnd ),
 	kbd( kServer ),
 	mouse( mServer ),
-	ship("shipd.dxf", { 400.0f,226.0f }),
+	ship("shipd.dxf", { -2026,226.0f }),
 	map("map.dxf"),
 	port (gfx,{0,D3DGraphics::SCREENHEIGHT-1,0,D3DGraphics::SCREENWIDTH - 1 }),
 	cam ( port,(float)port.GetWidth(), (float)port.GetHeight() )
