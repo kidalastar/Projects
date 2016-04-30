@@ -41,7 +41,7 @@ Game::~Game()
 void Game::Go()
 {	
 	HandleInput();
-	UpdateModel();
+    UpdateModel();
 	gfx.BeginFrame();
 	ComposeFrame();
 	gfx.EndFrame();

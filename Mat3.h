@@ -61,7 +61,7 @@ public:
 	 static _Mat3 Rotation(T theta)
 	 {
 		 const T cosTheta = cos(theta);
-		 const T sinTheta = cos(theta);
+		 const T sinTheta = sin(theta);
 		 _Mat3 r = { cosTheta,-sinTheta,(T)0.0,sinTheta,cosTheta,(T)0.0,(T)0.0,(T)0.0,(T)1.0 };
 		 return r;
 	 }

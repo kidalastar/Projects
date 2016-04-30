@@ -93,7 +93,7 @@ public:
 private:
 	// strutural
 	PolyClosed model;
-	const int shieldRadius = 60;
+	const int shieldRadius = 42;
 	const D3DCOLOR shieldColor = D3DCOLOR_XRGB(0,255,0);
 
 	//linear
@@ -103,7 +103,7 @@ private:
 	float thrust = 0.0f;
 
 	//angulas
-	float angle = 0.0f;
+	float angle = 0.0f;//0.0f;
 	float angVel = 0.0f;//velocidade angular
 	const float angAccel = 0.002f  * 60.0f * 60.0f;//velocidade angular 
 	float angAccelDir = 0.0f;//derecao da acelaracao // +1 = rotacao na direção contraria ao relógio,0 = não está mudando 
