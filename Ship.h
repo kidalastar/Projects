@@ -3,7 +3,7 @@
 #include "Camera.h"
 
 
-class Ship
+class Ship :public CollidableCircle
 {
 
 public:

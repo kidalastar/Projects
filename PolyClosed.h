@@ -6,6 +6,7 @@
 #include "dxflib\dl_dxf.h"
 #include "Mat3.h"
 #include "Drawble.h"
+#include "CollidableCircle.h"
 #include <vector> 
 #include <memory>
 
@@ -83,6 +84,28 @@ public:
 	Drawble GetDrawble() const
 	{
 		return Drawble(*this);
+	}
+	void HandleCollision(CollidableCircle& obj)
+	{
+		//broad phase test
+		const auto objAABB = obj.GetAABB();
+		auto prev = vertices.back();
+		for(auto i = vertices.begin(), end = vertices.end();i<end;i++)
+		{
+			const auto cur = *i;
+			const RectF lineAABB(prev,cur);
+			if(obj.GetAABB().Overlaps(lineAABB))
+			{
+				const auto vecVel = obj.GetVel();
+				const auto vecNormal = (cur - prev).CW90().Normalize();
+
+				//caso  (vecVel * lineNormal) > 0 o objeto já está saindo e não precisa fazer correção de posição.
+				if(vecVel * vecNormal < 0.0f)
+				{
+					
+				}
+			}
+		}
 	}
 private:
 	D3DCOLOR color;

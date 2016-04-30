@@ -100,6 +100,7 @@ public:
 		this->y -= rhs.y;
 		return *this;
 	}
+	//DOT PRODUCT de 2 pontos retorna a distancias entre os mesmos.
 	inline T		operator*( const _Vec2 &rhs ) const
 	{
 		return this->x * rhs.x + this->y * rhs.y;

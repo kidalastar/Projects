@@ -41,6 +41,13 @@ public:
 	left( rect.left ),
 	right( rect.right )
 	{}
+	inline	Rect(_Vec2<T> p0, _Vec2<T> p1)
+		:
+		top(min(p0.y, p1, y)),
+		bottom(max(p0.y,p1,y)),
+		left(min(p0.x, p1, x)),
+		right(max(p0.x, p1, x))
+	{}
 	inline	void Translate( _Vec2< T > d )
 	{
 		Translate( d.x,d.y );
@@ -71,6 +78,10 @@ public:
 	inline  T GetHeight() const
 	{
 		return bottom - top;
+	}
+	inline bool Overlaps(const Rect& rect) const
+	{
+		return top < rect.bottom && bottom < rect.top && left < rect.right && right < rect.left;
 	}
 
 public:
