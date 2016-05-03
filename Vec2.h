@@ -202,6 +202,15 @@ public:
 		return result;
 	}
 
+	template <typename T>
+	inline std::vector< _Vec2<T>> CalculateIntersecctionPoints(_Vec2<T> q, _Vec2<T> p1, _Vec2<T> p2,float r)
+	{
+		std::vector<_Vec2<T>> points;
+		const _Vec2<T>  d = p2 - p1;
+		const float dr2 = d.LenSq();
+		const float D = (p1 - q).Cross(p2 - q);
+		const float disc = sq(r) * dr2 - sq(D);
+	}
 public:
 	T x;
 	T y;
