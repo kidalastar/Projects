@@ -22,6 +22,7 @@
 
 #include "ChiliMath.h"
 #include <memory>
+#include <vector>
 
 template <typename T>
 class _Vec2
@@ -190,7 +191,11 @@ public:
 	{
 		return _Vec2( (x + p2.x) / 2.0f,(y + p2.y) / 2.0f );
 	}
-
+	inline int sgn(T valor) const
+	{
+		// Equivalente a  (x < 0 ?  -1 : 1)
+		return (T)(((T)0.0 <= valor) - (valor < (T)0.0));
+	}
 	//make work for T
 	inline _Vec2  Rotation(const float angle) const
 	{
@@ -201,16 +206,31 @@ public:
 		result.y = x * sine + y * cosine;
 		return result;
 	}
-
-	template <typename T>
-	inline std::vector< _Vec2<T>> CalculateIntersecctionPoints(_Vec2<T> q, _Vec2<T> p1, _Vec2<T> p2,float r)
+	inline std::vector< _Vec2<T>> CalculateIntersecctionPoints(_Vec2<T> pos, _Vec2<T> p1, _Vec2<T> p2,float r)
 	{
 		std::vector<_Vec2<T>> points;
 		const _Vec2<T>  d = p2 - p1;
 		const float dr2 = d.LenSq();
-		const float D = (p1 - q).Cross(p2 - q);
-		const float disc = sq(r) * dr2 - sq(D);
+		const float D = (p1 - pos).CrossWith(p2 - pos);
+		const float discriminant = sq(r) * dr2 - sq(D);
+
+		if (discriminant >= (T)0.0)
+		{
+			//calculate points of intersection
+			const float sqrtDisc = sq(discriminant);
+			const float lhsx = D * d.y;
+			const float rhsx = sgn(d.y) * d.x * sqrtDisc;
+			const float lhsy = -D * d.x;
+			const float rhsy = abs(d.y)*sqrtDisc;
+			points.push_back(_Vec2<T>{(lhsx + rhsx) / dr2, (lhsy + rhsy) / dr2}+pos);
+			if (discriminant > (T)0.0)
+			{
+				points.push_back(_Vec2<T>{(lhsx + rhsx) / dr2, (lhsy + rhsy) / dr2}+pos);
+			}
+		}
+		return  points;
 	}
+	
 public:
 	T x;
 	T y;
