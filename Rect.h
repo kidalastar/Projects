@@ -43,10 +43,10 @@ public:
 	{}
 	inline	Rect(_Vec2<T> p0, _Vec2<T> p1)
 		:
-		top(min(p0.y, p1, y)),
-		bottom(max(p0.y,p1,y)),
-		left(min(p0.x, p1, x)),
-		right(max(p0.x, p1, x))
+		top(min(p0.y, p1.y)),
+		bottom(max(p0.y, p1.y)),
+		left(min(p0.x, p1.x)),
+		right(max(p0.x, p1.x))
 	{}
 	inline	void Translate( _Vec2< T > d )
 	{
@@ -81,7 +81,13 @@ public:
 	}
 	inline bool Overlaps(const Rect& rect) const
 	{
-		return top < rect.bottom && bottom < rect.top && left < rect.right && right < rect.left;
+		return ((( rect.top < top && rect.top > bottom )|| (rect.top > top && rect.bottom < top))
+			&&  ((rect.left < left && rect.left > right) || (rect.left > left && rect.right < left)));
+	}
+	template <typename T2>
+	inline bool Contains(_Vec2<T2> p) const
+	{
+		return  p.y >= top && p.y <= bottom && p.x >= left && p.x <= right;
 	}
 
 public:

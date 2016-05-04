@@ -15,6 +15,10 @@ public:
 	{
 		return model.GetDrawble();
 	}
+	void HandleCollision(CollidableCircle& obj)
+	{
+		return model.HandleCollision(obj);
+	}
 
 
 private:

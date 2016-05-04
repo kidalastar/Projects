@@ -75,9 +75,15 @@ void Game::HandleInput()
 
 void Game::UpdateModel( )
 {
+#ifdef NDEBUG
 	const float dt = timer.GetTimeSec();
 	timer.StartWatch();
+#else 
+	const float dt = 1.0f/60.0f;
+#endif
+
 	ship.Update(dt);
+	map.HandleCollision(ship);
 }
 
 void Game::ComposeFrame()

@@ -1,31 +1,32 @@
 ﻿  D3DGraphics.cpp
   Game.cpp
   Windows.cpp
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(46): warning C4002: too many actual parameters for macro 'min' (compiling source file D3DGraphics.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(46): warning C4002: too many actual parameters for macro 'min' (compiling source file Windows.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(46): warning C4002: too many actual parameters for macro 'min' (compiling source file Game.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(47): warning C4002: too many actual parameters for macro 'max' (compiling source file D3DGraphics.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(47): warning C4002: too many actual parameters for macro 'max' (compiling source file Windows.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(47): warning C4002: too many actual parameters for macro 'max' (compiling source file Game.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(48): warning C4002: too many actual parameters for macro 'min' (compiling source file D3DGraphics.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(48): warning C4002: too many actual parameters for macro 'min' (compiling source file Windows.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(48): warning C4002: too many actual parameters for macro 'min' (compiling source file Game.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(49): warning C4002: too many actual parameters for macro 'max' (compiling source file D3DGraphics.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(49): warning C4002: too many actual parameters for macro 'max' (compiling source file Windows.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\rect.h(49): warning C4002: too many actual parameters for macro 'max' (compiling source file Game.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Game.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Windows.cpp)
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file Game.cpp)
+c:\users\douglas\documents\visual studio 2015\projects\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Game.cpp)
+c:\users\douglas\documents\visual studio 2015\projects\dxflib\dl_dxf.h(325): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details. (compiling source file Windows.cpp)
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file Windows.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): error C2259: 'Ship': cannot instantiate abstract class (compiling source file Game.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): note: due to following members: (compiling source file Game.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): note: 'RectF ICollidable::GetAABB(void) const': is abstract (compiling source file Game.cpp)
-d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): error C2259: 'Ship': cannot instantiate abstract class (compiling source file Windows.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\icollidable.h(7): note: see declaration of 'ICollidable::GetAABB' (compiling source file Game.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): note: due to following members: (compiling source file Windows.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): note: 'RectF ICollidable::GetAABB(void) const': is abstract (compiling source file Windows.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\icollidable.h(7): note: see declaration of 'ICollidable::GetAABB' (compiling source file Windows.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): note: 'Vec2 ICollidable::GetVel(void) const': is abstract (compiling source file Game.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\icollidable.h(8): note: see declaration of 'ICollidable::GetVel' (compiling source file Game.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\game.h(57): note: 'Vec2 ICollidable::GetVel(void) const': is abstract (compiling source file Windows.cpp)
-  d:\users\gunter\documents\visual studio 2015\projects\projeto1\projeto1\icollidable.h(8): note: see declaration of 'ICollidable::GetVel' (compiling source file Windows.cpp)
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy' (compiling source file Game.cpp)
+c:\users\douglas\documents\visual studio 2015\projects\vec2.h(197): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data (compiling source file Game.cpp)
+  c:\users\douglas\documents\visual studio 2015\projects\vec2.h(195): note: while compiling class template member function 'int _Vec2<float>::sgn(T) const'
+          with
+          [
+              T=float
+          ] (compiling source file Game.cpp)
+  c:\users\douglas\documents\visual studio 2015\projects\vec2.h(222): note: see reference to function template instantiation 'int _Vec2<float>::sgn(T) const' being compiled
+          with
+          [
+              T=float
+          ] (compiling source file Game.cpp)
+  c:\users\douglas\documents\visual studio 2015\projects\drawble.h(16): note: see reference to class template instantiation '_Vec2<float>' being compiled (compiling source file Game.cpp)
+c:\users\douglas\documents\visual studio 2015\projects\vec2.h(197): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data (compiling source file Windows.cpp)
+  c:\users\douglas\documents\visual studio 2015\projects\vec2.h(195): note: while compiling class template member function 'int _Vec2<float>::sgn(T) const'
+          with
+          [
+              T=float
+          ] (compiling source file Windows.cpp)
+  c:\users\douglas\documents\visual studio 2015\projects\vec2.h(222): note: see reference to function template instantiation 'int _Vec2<float>::sgn(T) const' being compiled
+          with
+          [
+              T=float
+          ] (compiling source file Windows.cpp)
+  c:\users\douglas\documents\visual studio 2015\projects\drawble.h(16): note: see reference to class template instantiation '_Vec2<float>' being compiled (compiling source file Windows.cpp)
+  Projeto1.vcxproj -> C:\Users\Douglas\Documents\Visual Studio 2015\Projects\Debug\Projeto1.exe

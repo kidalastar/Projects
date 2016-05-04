@@ -89,6 +89,28 @@ public:
 			angAccelDir = 0.0f;
 		}
 	}
+	// collidable interface
+	virtual RectF GetAABB() const override
+	{
+		return RectF(pos.y - shieldRadius,pos.y + shieldRadius,pos.x - shieldRadius,pos.x + shieldRadius);
+	}
+	virtual Vec2 GetCenter() const override
+	{
+		return pos;
+	}
+	virtual float GetRadius() const override
+	{
+		return (float)shieldRadius;
+	}
+	virtual Vec2 GetVel() const override
+	{
+		return vel;
+	}
+	///ricochetear
+	virtual void Rebound(Vec2 normal) override
+	{
+		vel -= normal * (vel * normal)*2.0f;
+	}
 
 private:
 	// strutural
